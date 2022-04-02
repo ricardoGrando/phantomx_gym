@@ -37,7 +37,7 @@ class phantomxEnv(gym.Env):
         self.test_real = test_real
 
         self.pub_cmd_vel = rospy.Publisher('/phantomx/cmd_vel'+TURTLE, Twist, queue_size=1)
-        self.sub_odom = rospy.Subscriber('/phantomx/odometry'+TURTLE, Odometry, self.getOdometry)
+        self.sub_odom = rospy.Subscriber('/ground_truth/state'+TURTLE, Odometry, self.getOdometry)
 
         self.reset_proxy = rospy.ServiceProxy('/gazebo/reset_world', Empty)
         self.unpause_proxy = rospy.ServiceProxy('gazebo/unpause_physics', Empty)
